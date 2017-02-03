@@ -51,6 +51,9 @@ class TtContentDataProviderService implements DataProviderServiceInterface, \TYP
         while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
 
             $time = $this->getTime($row['subheader']);
+            $timeToString = $this->getTimeToString($row['subheader']);
+            
+
             $importData[] = [
                 'pid' => $this->getPid($row),
                 'hidden' => $row['hidden'],
@@ -62,7 +65,7 @@ class TtContentDataProviderService implements DataProviderServiceInterface, \TYP
                 'title' => $row['header'],
                 'type' => 0,
                 'bodytext' => $row['bodytext'],
-//                'subheader' => $row['subheader'],
+                'subheader' => $row['subheader'],
 //                'notes' => $row['imported'],
                 'l10n_parent' => $row['l18n_parent'],
                 'sys_language_uid' => $row['sys_language_uid'],
@@ -73,6 +76,14 @@ class TtContentDataProviderService implements DataProviderServiceInterface, \TYP
                 'archive' => ($time > 0) ? ($time + 86400) : 0,
                 'related_files' => $this->getRelatedFiles($row),
                 'media' => $this->getMedia($row),
+                
+                
+                'event_title' => $row['header'],
+                'event_date' => gmdate("Y-m-d", $time),
+                'event_time' => $timeToString,
+                'categories' => 1,
+
+
 
 
                 'import_id' => $row['uid'],
@@ -138,6 +149,26 @@ class TtContentDataProviderService implements DataProviderServiceInterface, \TYP
         return $files;
     }
 
+	protected function getTimeToString($string)
+    {
+        if (empty($string)) {
+            return 0;
+        }
+        $string = strtolower($string);
+
+        $split = explode('|', $string);
+        $timeAsString = trim($split[2]);
+        if ($timeAsString) {
+
+            return $timeAsString;
+        } else {
+
+        }
+        return 0;
+    }
+    
+    
+    
 
     protected function getTime($string)
     {

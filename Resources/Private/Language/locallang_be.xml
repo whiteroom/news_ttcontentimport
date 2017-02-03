@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for backend of news ttnewsimport</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="ttcontent_importer_title">Import tt_content news records</label>
+		</languageKey>
+
+		<languageKey index="de" type="array">
+			<label index="ttcontent_importer_title">Import von tt_content Datensätzen</label>
+		</languageKey>
+
+	</data>
+</T3locallang>

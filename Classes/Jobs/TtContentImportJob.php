@@ -2,11 +2,12 @@
 
 namespace GeorgRinger\NewsTtcontentimport\Jobs;
 
+
 use GeorgRinger\News\Domain\Service\NewsImportService;
 use GeorgRinger\News\Jobs\AbstractImportJob;
 
 
-class TTNewsNewsImportJob extends AbstractImportJob
+class TtContentImportJob extends AbstractImportJob
 {
 
     /**
